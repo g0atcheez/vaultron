@@ -59,9 +59,6 @@ action :create do
 
   # Assign token data to destination
   node.run_state[new_resource.destination] = token_create.auth
-
-  # Fire notification
-  updated_by_last_action(true)
 end
 
 action :revoke do
@@ -85,7 +82,4 @@ action :revoke do
 
   # Revoke the token
   Vault.auth_token.revoke(new_resource.id)
-
-  # Fire notifications
-  updated_by_last_action(true)
 end
